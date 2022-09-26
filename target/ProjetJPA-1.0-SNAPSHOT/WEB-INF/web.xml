@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>ProjetSIL4_etape3</display-name>
+
+    <!-- Titre de l'application -->
+    <context-param>
+        <param-name>title</param-name>
+        <param-value>Gestion des étudiants de LP</param-value>
+    </context-param>
+
+    <!-- URLs communes aux vues -->
+    <context-param>
+        <param-name>entetedepage</param-name>
+        <param-value>/WEB-INF/commun/entetedepage.jsp</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pieddepage</param-name>
+        <param-value>/WEB-INF/commun/pieddepage.jsp</param-value>
+    </context-param>
+
+
+    <!--========= Projet Etape 3 MVC =========== -->
+    <!-- Servlet controleur -->
+    <servlet>
+        <servlet-name>controleur</servlet-name>
+        <servlet-class>fr.iut2.ProjetJPA.controleur.Controleur</servlet-class>
+        <init-param>
+            <param-name>urlLayout</param-name>
+            <param-value>/WEB-INF/commun/layout.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlAccueil</param-name>
+            <param-value>/WEB-INF/accueil.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlListeEtudiants</param-name>
+            <param-value>/WEB-INF/listeEtudiants.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlEtudiant</param-name>
+            <param-value>/WEB-INF/details.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlConsultationAbsences</param-name>
+            <param-value>/WEB-INF/absences/consultationAbsences.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlConsultationNotes</param-name>
+            <param-value>/WEB-INF/notes/consultationNotes.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlListeGroupes</param-name>
+            <param-value>/WEB-INF/groupes/listeGroupe.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>urlGroupe</param-name>
+            <param-value>/WEB-INF/groupes/detailsGroupe.jsp</param-value>
+        </init-param>
+    </servlet>
+
+    <!-- Mapping URL/Servlet -->
+    <servlet-mapping>
+        <servlet-name>controleur</servlet-name>
+        <url-pattern>/do/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- fichiers d'accueil -->
+    <welcome-file-list>
+        <welcome-file>do</welcome-file>
+    </welcome-file-list>
+
+    <!-- Importation JSTL -->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
+
+</web-app>
